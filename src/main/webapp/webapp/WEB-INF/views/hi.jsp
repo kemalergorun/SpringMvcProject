@@ -13,7 +13,7 @@
 
 <h2>${message}
 
-${messagebody}<h2/>
+${messageBody}<h2/>
 
 </body>
 
