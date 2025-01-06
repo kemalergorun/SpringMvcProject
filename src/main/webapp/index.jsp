@@ -7,6 +7,7 @@
 </head>
 <body>
 <h1>Hello Kemal</h1>
-<p>welcome my name is bigboss kemal</p>
+<p>wellcome my name is bigboss Kemal</p>
+<p>ceylini ve betulu cok seviyorum</p>
 </body>
 </html>
