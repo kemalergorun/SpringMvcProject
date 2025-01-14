@@ -1,13 +1,19 @@
-<!Doctype html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<meta name="viewport" content ="width=device-width,initial-scale=1.0">
-<title>hello kemal jsp</title>
-</head>
-<body>
-<h1>Hello Kemal</h1>
-<p>wellcome my name is bigboss Kemal</p>
-<p>ceylini ve betulu cok seviyorum</p>
-</body>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<!DOCTYPE html>
+<html>
+    <head>
+        <%@page isELIgnored="false" %>
+        <title>Student Management System</title>
+        <link rel="stylesheet" href="${pageContext.request.contextPath}/resources/css/style.css?version=1">
+    </head>
+
+
+    <body>
+            <div class="container">
+            <h2>STUDENT MANAGEMENT SYSTEM</h2>
+            <p><a class="normal" href="${pageContext.request.contextPath}/students/">List Student</a></p>
+            <p><a class="normal" href="${pageContext.request.contextPath}/students/new">Add Student</a></p>
+        </div>
+    </body>
 </html>
