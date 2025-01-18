@@ -15,8 +15,16 @@ import java.util.Properties;
 @PropertySource("classpath:db.properties")
 public class RootConfig {
 
-    @Autowired
+    @Autowired//db properties içindeki bilgiler gelir
     private Environment environment;
+    @Bean
+    public LocalSessionFactoryBean sessionFactory(){
+        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
+        sessionFactory.setDataSource(dataSource()); //When we call this method, we get a DataSource object here.
+        sessionFactory.setHibernateProperties(hibernateProperties());//entity classları bulmak için setpackages to scan
+        sessionFactory.setPackagesToScan("com.tpe.domain"); //String array required in older versions. new String[]{"com.tpe.domain"}
+        return sessionFactory;
+    }
 
     private DataSource dataSource(){
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
@@ -36,12 +44,5 @@ public class RootConfig {
         return properties;
     }
 
-    @Bean
-    public LocalSessionFactoryBean sessionFactory(){
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource()); //When we call this method, we get a DataSource object here.
-        sessionFactory.setHibernateProperties(hibernateProperties());
-        sessionFactory.setPackagesToScan("com.tpe.domain"); //String array required in older versions. new String[]{"com.tpe.domain"}
-        return sessionFactory;
-    }
+
 }

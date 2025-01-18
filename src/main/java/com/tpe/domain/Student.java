@@ -8,14 +8,24 @@ import java.time.LocalDateTime;
 @Entity
 @Table(name = "t_student")
 public class Student {
-
     @Id
-    @GeneratedValue(strategy =GenerationType.IDENTITY)
-    private  Long id;
-    @NotBlank(message = "please enter a firstname")
-    @Column(nullable = false)
-    private String firstname;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
 
+    @NotBlank(message = "Please provide first name!")//boşluk kabul etmez empty ve null kabul etmez
+    @Column(nullable = false)
+    private String firstName;
+
+    @NotEmpty(message = "Please provide last name!")//empty null kabul etmez
+    @Column(nullable = false)
+    private String lastName;
+
+    @NotNull(message = "Please provide grade!")//null kabul etmez
+    private Integer grade;
+
+    private LocalDateTime createDate=LocalDateTime.now();
+
+    //getter setter
     public Long getId() {
         return id;
     }
@@ -24,20 +34,20 @@ public class Student {
         this.id = id;
     }
 
-    public String getLastname() {
-        return lastname;
+    public String getFirstName() {
+        return firstName;
     }
 
-    public void setLastname(String lastname) {
-        this.lastname = lastname;
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
     }
 
-    public String getFirstname() {
-        return firstname;
+    public String getLastName() {
+        return lastName;
     }
 
-    public void setFirstname(String firstname) {
-        this.firstname = firstname;
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
     }
 
     public Integer getGrade() {
@@ -51,21 +61,10 @@ public class Student {
     public LocalDateTime getCreateDate() {
         return createDate;
     }
+
    // public void setCreateDate(LocalDateTime createDate) {
-    //    this.createDate = createDate;
+      //  this.createDate = createDate;
    // }
-    @NotEmpty(message = "please enter a lastname")
-    @Column(nullable = false)
-    private String lastname;
 
 
-    @NotNull(message = "please enter a grade")
-    @Column(nullable = false)
-    private Integer grade;
-
-    private LocalDateTime createDate;
-    @PrePersist
-    public  void prePersist(){
-        createDate=LocalDateTime.now();
-    }
 }
